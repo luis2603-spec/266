@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cuánto falta para mi cumpleaños?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #f5c0c0, #fa8585);
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            background: #ffffff;
+            color: #ff3333;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.2rem;
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background: #fa8585;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Cuánto falta para mi cumpleaños?</h1>
+    <div id="countdown" class="countdown">Cargando...</div>
+    <h2>Lista de regalos:</h2>
+    <ul>
+        <li>Moto</li>
+        <li>Carro</li>
+        <li>Avión</li>
+        <li>5 Mujeres</li>
+        <li>5000 Mil Dólares en Efectivo</li>
+    </ul>
+
+    <script>
+        function calcularCuentaRegresiva() {
+            const fechaCumpleaños = new Date('2025-03-26T00:00:00');
+            const fechaActual = new Date();
+            const diferencia = fechaCumpleaños - fechaActual;
+            const díasRestantes = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+
+            const elementoCuentaRegresiva = document.getElementById('countdown');
+            if (díasRestantes > 0) {
+                elementoCuentaRegresiva.textContent = `¡Faltan ${díasRestantes} días para tu cumpleaños! 🎉`;
+            } else {
+                elementoCuentaRegresiva.textContent = "¡Feliz cumpleaños! ";
+            }
+        }
+
+        calcularCuentaRegresiva();
+        setInterval(calcularCuentaRegresiva, 1000 * 60 * 60 * 24); // Actualización diaria
+    </script>
+</body>
+</html>
